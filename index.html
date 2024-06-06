@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Changer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>UBAH WARNA</h1>
+        <div class="box">
+            <div class="circle red"></div>
+            <div class="circle green"></div>
+            <div class="circle blue"></div>
+            <div class="circle dark" id="dark"></div>
+        </div>
+        <button class="resetButton">RESET BUTTON</button>
+    </div>
+
+    <script>
+        const darkCircle = document.getElementById("dark");
+        const circles = document.querySelectorAll(".circle");
+        const resetButton = document.querySelector(".resetButton")
+
+        resetButton.addEventListener("click", (style) => {
+            document.body.style.backgroundColor = 'white'
+            document.body.style.color = "black"
+        })
+
+        darkCircle.addEventListener("click", (style) => {
+            document.body.style.color = "white";
+        })
+        circles.forEach(circle => {
+            circle.addEventListener("click", (style) => {
+                const computedStyle = window.getComputedStyle(style.target);
+                document.body.style.backgroundColor = computedStyle.backgroundColor
+                console.log(computedStyle.backgroundColor)
+            })
+        })
+        
+    </script>
+</body>
+</html>
